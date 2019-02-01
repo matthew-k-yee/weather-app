@@ -8,13 +8,10 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = ({
-      city: '',
-      zipCode: '',
-      currentTemp: '',
-      tempMax: '',
-      tempMin: '',
-      description: ''
+      zipCode: ''
     })
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
  
   async getWeather() {
@@ -24,15 +21,29 @@ class App extends Component {
     return response.data
   }
 
-  async componentDidMount() {
-    await this.getWeather()
-  }
+  // async componentDidMount() {
+  //   await this.getWeather()
+  // }
 
+  handleChange(e) {
+    this.setState({
+      zipCode: e.target.value
+    })
+  }
+  
+  handleSubmit(e) {
+
+
+  }
+  
   render() {
     return (
       <div className="App">
       <Main />
-      <Search />
+      <Search zipCode={this.state.zipCode}
+              onChange={this.handleChange}
+              onSubmit={this.handleSubmit}
+      />
       </div>
     );
   }

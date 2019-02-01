@@ -1,14 +1,16 @@
 import React from 'react'
 
-class Search extends React.Component {
-  render() {
+function Search(props) {
     return (
-      <form>
-        <input/>
-        <button>Click</button>
+      <form onSubmit={props.onSubmit}>
+        <input type= 'number'
+               name='zipCode'
+               value={props.zipCode}
+               onChange={props.onChange}
+        />
+        <button type='submit'>Click</button>
       </form>
     )
   }
-}
 
 export default Search
