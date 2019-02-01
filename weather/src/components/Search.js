@@ -11,7 +11,7 @@ function Search(props) {
                value={props.zipCode}
                onChange={props.onChange}
         />
-        <button type='submit'>Click</button>
+        <button type='submit'>Submit</button>
       </form>
       </>
     )

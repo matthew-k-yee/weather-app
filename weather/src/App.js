@@ -4,6 +4,8 @@ import Search from './components/Search'
 import WeatherData from './components/WeatherData'
 import './App.css';
 
+// const weatherURL = 'http://api.openweathermap.org/data/2.5/weather?zip='
+console.log(process.env.REACT_APP_WEATHER_API_KEY)
 class App extends Component {
   constructor(props){
     super(props);
