@@ -15,15 +15,15 @@ class App extends Component {
   }
  
   async getWeather() {
-    const request = axios.get('http://api.openweathermap.org/data/2.5/weather?zip=11207,us&units=imperial&APPID=ac5dcf5b7138ec9fb94b20fc551d75dd')
+    const request = axios.get(`http://api.openweathermap.org/data/2.5/weather?zip=${this.state.zipCode},us&units=imperial&APPID=ac5dcf5b7138ec9fb94b20fc551d75dd`)
     const response = await request;
     console.log(response.data)
     return response.data
   }
 
-  // async componentDidMount() {
-  //   await this.getWeather()
-  // }
+  async componentDidMount() {
+    await this.getWeather()
+  }
 
   handleChange(e) {
     this.setState({
@@ -32,8 +32,8 @@ class App extends Component {
   }
   
   handleSubmit(e) {
-
-
+    e.preventDefault()
+    this.getWeather(this.state.zipCode)
   }
   
   render() {
