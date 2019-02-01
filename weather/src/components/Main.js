@@ -1,10 +1,12 @@
 import React from 'react'
 
-function Welcome(props) {
+class Main extends React.Component {
+  render(){
     return(
       <h1>Weather App</h1>
     )
+  }
 }
 
 
-export default Welcome
+export default Main
