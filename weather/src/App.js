@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import Main from './components/Main'
 import Search from './components/Search'
 import WeatherData from './components/WeatherData'
 import './App.css';
@@ -14,10 +13,12 @@ class App extends Component {
       currentTemp: '',
       tempMax: '',
       tempMin: '',
-      description: ''
+      description: '', 
+      toggle: false
     })
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.toggleVisibility = this.toggleVisibility.bind(this)
   }
  
   async getWeather() {
@@ -47,17 +48,25 @@ class App extends Component {
   handleSubmit(e) {
     e.preventDefault()
     this.getWeather(this.state.zipCode)
+    this.toggleVisibility()
   }
-  
+
+  toggleVisibility(e) {
+    this.setState({
+      toggle: true
+    })
+  }
+
   render() {
     return (
       <div className="App">
-      <Main />
-      <Search zipCode={this.state.zipCode}
+      {this.state.toggle === true ? <WeatherData data={this.state}/>  : 
+        <Search zipCode={this.state.zipCode}
               onChange={this.handleChange}
               onSubmit={this.handleSubmit}
-      />
-      <WeatherData data={this.state}/>
+              onClick={this.toggleVisibility}
+      />}
+      
       </div>
     );
   }
