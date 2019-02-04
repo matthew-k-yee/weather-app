@@ -31,7 +31,7 @@ class App extends Component {
       currentTemp: response.data.main.temp,
       tempMax: response.data.main.temp_max,
       tempMin: response.data.main.temp_min,
-      description: response.data.weather
+      description: response.data.weather[0].description
     })
     console.log(response.data)
     return response.data
@@ -63,7 +63,8 @@ class App extends Component {
     return (
       <div className="App">
       {this.state.toggle === true ? <WeatherData data={this.state}/>  : 
-        <Search zipCode={this.state.zipCode}
+        <Search  
+              zipCode={this.state.zipCode}
               onChange={this.handleChange}
               onSubmit={this.handleSubmit}
               onClick={this.toggleVisibility}
